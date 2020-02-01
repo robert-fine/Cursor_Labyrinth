@@ -8,7 +8,22 @@
     <title>Mouse Pointer Labyrinth Game</title>
   </head>
   <body>
-    <div id="output"></div>
+    <div id="container">
+      <div id="border">
+        <div id="topBorder" class="wall topBorder"></div>
+        <div id="leftBorder" class="wall leftBorder"></div>
+        <div id="rightBorder" class="wall rightBorder"></div>
+        <div id="header">
+          <input type="submit" id="start" class="btn" value="Lights Out" />
+          <p id="timer">00:00:00</p>
+        </div>
+        <div id="playArea"></div>
+        <div id="footer">
+          <input type="submit" id="finish" class="btn" value="Finish" />
+        </div>
+        <div id="bottomBorder" class="wall bottomBorder"></div>
+      </div>
+    </div>
     <script src="./js/game.js"></script>
   </body>
 </html>

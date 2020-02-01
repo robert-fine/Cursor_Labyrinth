@@ -1,16 +1,118 @@
+:root {
+  --wall-color: #ffae00;
+  --tile-color: blue;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;
+}
+
+html {
+  height: 100%;
 }
 
 body {
-  background: #7a7a7a;
+  position: relative;
+  background: #333;
+  line-height: 1.4;
+  height: 100%;
+  color: #fff;
+}
+
+#container {
+  top: 25%;
+  bottom: 25%;
+  left: 25%;
+  right: 25%;
+  width: 800px;
+  height: 800px;
+  background: #555;
+  margin: auto;
+  position: absolute;
+}
+
+/* #header {
+  padding: 25px;
+} */
+
+#timer {
+  position: absolute;
+  top: 25px;
+  right: 100px;
+  height: 25px;
+}
+
+.btn {
+  height: 25px;
+  width: 100px;
+  border-radius: 5px;
+  border: none;
+  background: #333;
+  color: #fff;
+  z-index: 1;
+}
+
+#start {
+  position: absolute;
+  top: 25px;
+  left: 100px;
+}
+
+#finish {
+  position: absolute;
+  bottom: 25px;
+  right: 100px;
+}
+
+#playArea {
+  position: absolute;
+  top: 50px;
+  left: 25px;
+  right: 25px;
+  bottom: 50px;
+}
+
+/* walls */
+.wall {
+  background: var(--wall-color);
+}
+
+.topBorder {
+  width: 800px;
+  height: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.leftBorder {
+  width: 25px;
+  height: 750px;
+  position: absolute;
+  top: 25px;
+  left: 0;
+}
+
+.rightBorder {
+  width: 25px;
+  height: 750px;
+  position: absolute;
+  top: 25px;
+  right: 0;
+}
+
+.bottomBorder {
+  width: 800px;
+  height: 25px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .square {
-  width: 140px;
-  height: 140px;
-  background: blue;
+  width: 150px;
+  height: 150px;
+  background: var(--tile-color);
 }
