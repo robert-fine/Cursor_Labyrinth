@@ -4,33 +4,59 @@ const startBtn = document.querySelector("#start");
 const finishBtn = document.querySelector("#finish");
 const timerDisplay = document.querySelector("#timer");
 
-playArea.innerHTML = `
-<div class='tile'>
-<div class='wall square'>
+// playArea.innerHTML = `
+// `;
 
-</div>
-</div>
-`;
-
+// Walls
 let walls;
 
 function findWalls() {
   walls = container.querySelectorAll(".wall");
 }
 
+function activateWalls() {
+  walls.forEach(wall => {
+    wall.addEventListener("mouseover", touchWall);
+  });
+  function touchWall() {
+    stopTimer();
+    // Deactivate walls
+    walls.forEach(wall => {
+      wall.removeEventListener("mouseover", touchWall);
+    });
+  }
+}
+
+// Game
 startBtn.addEventListener("click", startGame);
+finishBtn.addEventListener("click", stopTimer);
 
 function startGame(e) {
   e.preventDefault();
   findWalls();
+  resetTimer();
   timer();
-  walls.forEach(wall => {
-    wall.addEventListener("mouseover", touchWall);
-  });
+  activateWalls();
+  findTiles();
+}
 
-  function touchWall(e) {
-    console.log("You touched a wall");
-  }
+// Rotate
+let tiles;
+
+function findTiles() {
+  tiles = playArea.querySelectorAll(".tile");
+}
+
+function rotateLeft() {
+  tiles.forEach(tile => {
+    tile.classList.add("rotateActivate");
+    // tile.classList.remove('rotateActivate')
+  });
+  console.log("rotate");
+}
+
+function rotate() {
+  setTimeout(rotateLeft, 5000);
 }
 
 // timer function
@@ -64,8 +90,8 @@ function stopTimer() {
   clearTimeout(t);
 }
 
-finishBtn.addEventListener("click", stopTimer);
-
-// `
-// ${min}:${sec}:${milSec}
-// `;
+function resetTimer() {
+  min = 0;
+  sec = 0;
+  milSec = 0;
+}

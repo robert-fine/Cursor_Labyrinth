@@ -1,6 +1,7 @@
 :root {
   --wall-color: #ffae00;
   --tile-color: blue;
+  --background: #333;
 }
 
 * {
@@ -15,7 +16,7 @@ html {
 
 body {
   position: relative;
-  background: #333;
+  background: var(--background);
   line-height: 1.4;
   height: 100%;
   color: #fff;
@@ -26,16 +27,12 @@ body {
   bottom: 25%;
   left: 25%;
   right: 25%;
-  width: 800px;
-  height: 800px;
-  background: #555;
+  width: 850px;
+  height: 900px;
+  background: var(--background);
   margin: auto;
   position: absolute;
 }
-
-/* #header {
-  padding: 25px;
-} */
 
 #timer {
   position: absolute;
@@ -74,13 +71,29 @@ body {
   bottom: 50px;
 }
 
-/* walls */
+.row {
+  display: flex;
+}
+
+.tile {
+  position: relative;
+  background: var(--tile-color);
+}
+
 .wall {
   background: var(--wall-color);
 }
 
+.path {
+  background: var(--background);
+}
+
+.tc {
+  position: absolute;
+}
+
 .topBorder {
-  width: 800px;
+  width: 850px;
   height: 25px;
   position: absolute;
   top: 0;
@@ -89,7 +102,7 @@ body {
 
 .leftBorder {
   width: 25px;
-  height: 750px;
+  height: 850px;
   position: absolute;
   top: 25px;
   left: 0;
@@ -97,14 +110,14 @@ body {
 
 .rightBorder {
   width: 25px;
-  height: 750px;
+  height: 850px;
   position: absolute;
   top: 25px;
   right: 0;
 }
 
 .bottomBorder {
-  width: 800px;
+  width: 850px;
   height: 25px;
   position: absolute;
   bottom: 0;
@@ -112,7 +125,391 @@ body {
 }
 
 .square {
-  width: 150px;
-  height: 150px;
-  background: var(--tile-color);
+  width: 200px;
+  height: 200px;
+}
+
+.t1-1 {
+  width: 25px;
+  height: 25px;
+  left: 0;
+  top: 0;
+}
+.t1-2 {
+  width: 25px;
+  height: 25px;
+  left: 25px;
+  top: 0;
+}
+.t1-3 {
+  width: 25px;
+  height: 25px;
+  left: 50px;
+  top: 0;
+}
+.t1-4 {
+  width: 25px;
+  height: 25px;
+  left: 75px;
+  top: 0;
+}
+.t1-5 {
+  width: 25px;
+  height: 25px;
+  left: 100px;
+  top: 0;
+}
+.t1-6 {
+  width: 25px;
+  height: 25px;
+  left: 125px;
+  top: 0;
+}
+.t1-7 {
+  width: 25px;
+  height: 25px;
+  left: 150px;
+  top: 0;
+}
+.t1-8 {
+  width: 25px;
+  height: 25px;
+  left: 175px;
+  top: 0;
+}
+.t2-1 {
+  width: 25px;
+  height: 25px;
+  left: 0;
+  top: 25px;
+}
+.t2-2 {
+  width: 25px;
+  height: 25px;
+  left: 25px;
+  top: 25px;
+}
+.t2-3 {
+  width: 25px;
+  height: 25px;
+  left: 50px;
+  top: 25px;
+}
+.t2-4 {
+  width: 25px;
+  height: 25px;
+  left: 75px;
+  top: 25px;
+}
+.t2-5 {
+  width: 25px;
+  height: 25px;
+  left: 100px;
+  top: 25px;
+}
+.t2-6 {
+  width: 25px;
+  height: 25px;
+  left: 125px;
+  top: 25px;
+}
+.t2-7 {
+  width: 25px;
+  height: 25px;
+  left: 150px;
+  top: 25px;
+}
+.t2-8 {
+  width: 25px;
+  height: 25px;
+  left: 175px;
+  top: 25px;
+}
+.t3-1 {
+  width: 25px;
+  height: 25px;
+  left: 0;
+  top: 50px;
+}
+.t3-2 {
+  width: 25px;
+  height: 25px;
+  left: 25px;
+  top: 50px;
+}
+.t3-3 {
+  width: 25px;
+  height: 25px;
+  left: 50px;
+  top: 50px;
+}
+.t3-4 {
+  width: 25px;
+  height: 25px;
+  left: 75px;
+  top: 50px;
+}
+.t3-5 {
+  width: 25px;
+  height: 25px;
+  left: 100px;
+  top: 50px;
+}
+.t3-6 {
+  width: 25px;
+  height: 25px;
+  left: 125px;
+  top: 50px;
+}
+.t3-7 {
+  width: 25px;
+  height: 25px;
+  left: 150px;
+  top: 50px;
+}
+.t3-8 {
+  width: 25px;
+  height: 25px;
+  left: 175px;
+  top: 50px;
+}
+.t4-1 {
+  width: 25px;
+  height: 25px;
+  left: 0;
+  top: 75px;
+}
+.t4-2 {
+  width: 25px;
+  height: 25px;
+  left: 25px;
+  top: 75px;
+}
+.t4-3 {
+  width: 25px;
+  height: 25px;
+  left: 50px;
+  top: 75px;
+}
+.t4-4 {
+  width: 25px;
+  height: 25px;
+  left: 75px;
+  top: 75px;
+}
+.t4-5 {
+  width: 25px;
+  height: 25px;
+  left: 100px;
+  top: 75px;
+}
+.t4-6 {
+  width: 25px;
+  height: 25px;
+  left: 125px;
+  top: 75px;
+}
+.t4-7 {
+  width: 25px;
+  height: 25px;
+  left: 150px;
+  top: 75px;
+}
+.t4-8 {
+  width: 25px;
+  height: 25px;
+  left: 175px;
+  top: 75px;
+}
+.t5-1 {
+  width: 25px;
+  height: 25px;
+  left: 0;
+  top: 100px;
+}
+.t5-2 {
+  width: 25px;
+  height: 25px;
+  left: 25px;
+  top: 100px;
+}
+.t5-3 {
+  width: 25px;
+  height: 25px;
+  left: 50px;
+  top: 100px;
+}
+.t5-4 {
+  width: 25px;
+  height: 25px;
+  left: 75px;
+  top: 100px;
+}
+.t5-5 {
+  width: 25px;
+  height: 25px;
+  left: 100px;
+  top: 100px;
+}
+.t5-6 {
+  width: 25px;
+  height: 25px;
+  left: 125px;
+  top: 100px;
+}
+.t5-7 {
+  width: 25px;
+  height: 25px;
+  left: 150px;
+  top: 100px;
+}
+.t5-8 {
+  width: 25px;
+  height: 25px;
+  left: 175px;
+  top: 100px;
+}
+.t6-1 {
+  width: 25px;
+  height: 25px;
+  left: 0;
+  top: 125px;
+}
+.t6-2 {
+  width: 25px;
+  height: 25px;
+  left: 25px;
+  top: 125px;
+}
+.t6-3 {
+  width: 25px;
+  height: 25px;
+  left: 50px;
+  top: 125px;
+}
+.t6-4 {
+  width: 25px;
+  height: 25px;
+  left: 75px;
+  top: 125px;
+}
+.t6-5 {
+  width: 25px;
+  height: 25px;
+  left: 100px;
+  top: 125px;
+}
+.t6-6 {
+  width: 25px;
+  height: 25px;
+  left: 125px;
+  top: 125px;
+}
+.t6-7 {
+  width: 25px;
+  height: 25px;
+  left: 150px;
+  top: 125px;
+}
+.t6-8 {
+  width: 25px;
+  height: 25px;
+  left: 175px;
+  top: 125px;
+}
+.t7-1 {
+  width: 25px;
+  height: 25px;
+  left: 0;
+  top: 150px;
+}
+.t7-2 {
+  width: 25px;
+  height: 25px;
+  left: 25px;
+  top: 150px;
+}
+.t7-3 {
+  width: 25px;
+  height: 25px;
+  left: 50px;
+  top: 150px;
+}
+.t7-4 {
+  width: 25px;
+  height: 25px;
+  left: 75px;
+  top: 150px;
+}
+.t7-5 {
+  width: 25px;
+  height: 25px;
+  left: 100px;
+  top: 150px;
+}
+.t7-6 {
+  width: 25px;
+  height: 25px;
+  left: 125px;
+  top: 150px;
+}
+.t7-7 {
+  width: 25px;
+  height: 25px;
+  left: 150px;
+  top: 150px;
+}
+.t7-8 {
+  width: 25px;
+  height: 25px;
+  left: 175px;
+  top: 150px;
+}
+.t8-1 {
+  width: 25px;
+  height: 25px;
+  left: 0;
+  top: 175px;
+}
+.t8-2 {
+  width: 25px;
+  height: 25px;
+  left: 25px;
+  top: 175px;
+}
+.t8-3 {
+  width: 25px;
+  height: 25px;
+  left: 50px;
+  top: 175px;
+}
+.t8-4 {
+  width: 25px;
+  height: 25px;
+  left: 75px;
+  top: 175px;
+}
+.t8-5 {
+  width: 25px;
+  height: 25px;
+  left: 100px;
+  top: 175px;
+}
+.t8-6 {
+  width: 25px;
+  height: 25px;
+  left: 125px;
+  top: 175px;
+}
+.t8-7 {
+  width: 25px;
+  height: 25px;
+  left: 150px;
+  top: 175px;
+}
+.t8-8 {
+  width: 25px;
+  height: 25px;
+  left: 175px;
+  top: 175px;
 }
