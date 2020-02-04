@@ -78,6 +78,9 @@ body {
 .tile {
   position: relative;
   background: var(--tile-color);
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
 }
 
 .wall {
