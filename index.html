@@ -8,49 +8,54 @@
     <title>Lights Out Labyrinth</title>
   </head>
   <body>
+    <div id="message">
+        <input type="submit" id="close" value="❌"></input>
+      
+      <div id="messageContent">testing</div>
+    </div>
     <div id="container">
       <!-- <div id="border"> -->
         <div id="topBorder" class="wall topBorder"></div>
         <div id="leftBorder" class="wall leftBorder"></div>
         <div id="rightBorder" class="wall rightBorder"></div>
         <!-- <div id="header"> -->
-          <input type="submit" id="start" class="btn" value="Lights Out" />
+          <input type="submit" id="start" class="btn" value="START" />
           <p id="timer">00:00:00</p>
         <!-- </div> -->
         <div id="playArea">
           <div class="row r1">
-            <div class="tile r1-c1 square">
+            <div class="tile r1-c1 rotateLeft1 square">
               <!-- row1 -->
               <div class="wall tc t1-1"></div>
-              <div class="wall tc t1-2"></div>
+              <div class="path tc t1-2"></div>
               <div class="wall tc t1-3"></div>
               <div class="wall tc t1-4"></div>
               <div class="wall tc t1-5"></div>
-              <div class="path tc t1-6"></div>
+              <div class="wall tc t1-6"></div>
               <div class="wall tc t1-7"></div>
               <div class="wall tc t1-8"></div>
               <!-- row2 -->
               <div class="wall tc t2-1"></div>
-              <div class="wall tc t2-2"></div>
-              <div class="wall tc t2-3"></div>
+              <div class="path tc t2-2"></div>
+              <div class="path tc t2-3"></div>
               <div class="wall tc t2-4"></div>
-              <div class="wall tc t2-5"></div>
+              <div class="path tc t2-5"></div>
               <div class="path tc t2-6"></div>
               <div class="path tc t2-7"></div>
               <div class="wall tc t2-8"></div>
               <!-- row3 -->
               <div class="wall tc t3-1"></div>
               <div class="wall tc t3-2"></div>
-              <div class="wall tc t3-3"></div>
-              <div class="wall tc t3-4"></div>
-              <div class="wall tc t3-5"></div>
+              <div class="path tc t3-3"></div>
+              <div class="path tc t3-4"></div>
+              <div class="path tc t3-5"></div>
               <div class="wall tc t3-6"></div>
               <div class="path tc t3-7"></div>
               <div class="path tc t3-8"></div>
               <!-- row4 -->
               <div class="path tc t4-1"></div>
-              <div class="path tc t4-2"></div>
-              <div class="path tc t4-3"></div>
+              <div class="wall tc t4-2"></div>
+              <div class="wall tc t4-3"></div>
               <div class="wall tc t4-4"></div>
               <div class="wall tc t4-5"></div>
               <div class="wall tc t4-6"></div>
@@ -58,17 +63,17 @@
               <div class="wall tc t4-8"></div>
               <!-- row5 -->
               <div class="path tc t5-1"></div>
-              <div class="wall tc t5-2"></div>
-              <div class="path tc t5-3"></div>
-              <div class="path tc t5-4"></div>
-              <div class="path tc t5-5"></div>
+              <div class="path tc t5-2"></div>
+              <div class="wall tc t5-3"></div>
+              <div class="wall tc t5-4"></div>
+              <div class="wall tc t5-5"></div>
               <div class="wall tc t5-6"></div>
               <div class="path tc t5-7"></div>
               <div class="wall tc t5-8"></div>
               <!-- row6 -->
               <div class="wall tc t6-1"></div>
-              <div class="wall tc t6-2"></div>
-              <div class="wall tc t6-3"></div>
+              <div class="path tc t6-2"></div>
+              <div class="path tc t6-3"></div>
               <div class="wall tc t6-4"></div>
               <div class="path tc t6-5"></div>
               <div class="path tc t6-6"></div>
@@ -77,8 +82,8 @@
               <!-- row7 -->
               <div class="wall tc t7-1"></div>
               <div class="wall tc t7-2"></div>
-              <div class="wall tc t7-3"></div>
-              <div class="wall tc t7-4"></div>
+              <div class="path tc t7-3"></div>
+              <div class="path tc t7-4"></div>
               <div class="path tc t7-5"></div>
               <div class="wall tc t7-6"></div>
               <div class="wall tc t7-7"></div>
@@ -94,7 +99,7 @@
               <div class="wall tc t8-8"></div>
 
             </div>
-            <div class="tile r1-c2 square">              
+            <div class="tile r1-c2 rotateRight2 square">              
               <!-- row1 -->
               <div class="wall tc t1-1"></div>
               <div class="wall tc t1-2"></div>
@@ -168,7 +173,7 @@
               <div class="wall tc t8-7"></div>
               <div class="wall tc t8-8"></div>
             </div>
-            <div class="tile r1-c3 square">              
+            <div class="tile r1-c3 rotateLeft2 square">              
               <!-- row1 -->
               <div class="path tc t1-1"></div>
               <div class="wall tc t1-2"></div>
@@ -242,7 +247,7 @@
               <div class="wall tc t8-7"></div>
               <div class="wall tc t8-8"></div>
             </div>
-            <div class="tile r1-c4 square">              
+            <div class="tile r1-c4 rotateLeft3 square">              
               <!-- row1 -->
               <div class="wall tc t1-1"></div>
               <div class="wall tc t1-2"></div>
@@ -319,7 +324,7 @@
           </div>
 
           <div class="row r2">
-            <div class="tile r2-c1 square">
+            <div class="tile r2-c1 rotateRight1 square">
               <!-- row1 -->
               <div class="wall tc t1-1"></div>
               <div class="wall tc t1-2"></div>
@@ -393,7 +398,7 @@
               <div class="path tc t8-7"></div>
               <div class="wall tc t8-8"></div>
             </div>
-            <div class="tile r2-c2 square">
+            <div class="tile r2-c2 rotateLeft1 square">
               <!-- row1 -->
               <div class="wall tc t1-1"></div>
               <div class="path tc t1-2"></div>
@@ -467,7 +472,7 @@
               <div class="wall tc t8-7"></div>
               <div class="wall tc t8-8"></div>
             </div>
-            <div class="tile r2-c3 square">
+            <div class="tile r2-c3 rotateRight3 square">
               <!-- row1 -->
               <div class="path tc t1-1"></div>
               <div class="path tc t1-2"></div>
@@ -541,7 +546,7 @@
               <div class="wall tc t8-7"></div>
               <div class="wall tc t8-8"></div>
             </div>
-            <div class="tile r2-c4 square">
+            <div class="tile r2-c4 rotateLeft1 square">
               <!-- row1 -->
               <div class="wall tc t1-1"></div>
               <div class="path tc t1-2"></div>
@@ -618,7 +623,7 @@
           </div>
 
           <div class="row r3">
-            <div class="tile r3-c1 square">
+            <div class="tile r3-c1 rotateLeft2 square">
               <!-- row1 -->
               <div class="wall tc t1-1"></div>
               <div class="wall tc t1-2"></div>
@@ -681,7 +686,7 @@
               <div class="path tc t7-5"></div>
               <div class="path tc t7-6"></div>
               <div class="path tc t7-7"></div>
-              <div class="path tc t7-8"></div>
+              <div class="wall tc t7-8"></div>
               <!-- row8 -->
               <div class="wall tc t8-1"></div>
               <div class="wall tc t8-2"></div>
@@ -690,9 +695,9 @@
               <div class="wall tc t8-5"></div>
               <div class="wall tc t8-6"></div>
               <div class="wall tc t8-7"></div>
-              <div class="path tc t8-8"></div>
+              <div class="wall tc t8-8"></div>
             </div>
-            <div class="tile r3-c2 square">
+            <div class="tile r3-c2 rotateRight1 square">
               <!-- row1 -->
               <div class="wall tc t1-1"></div>
               <div class="wall tc t1-2"></div>
@@ -766,7 +771,7 @@
               <div class="wall tc t8-7"></div>
               <div class="wall tc t8-8"></div>
             </div>
-            <div class="tile r3-c3 square">
+            <div class="tile r3-c3 rotateLeft3 square">
               <!-- row1 -->
               <div class="path tc t1-1"></div>
               <div class="wall tc t1-2"></div>
@@ -840,7 +845,7 @@
               <div class="wall tc t8-7"></div>
               <div class="wall tc t8-8"></div>
             </div>
-            <div class="tile r3-c4 square">
+            <div class="tile r3-c4 rotateLeft2 square">
               <!-- row1 -->
               <div class="wall tc t1-1"></div>
               <div class="wall tc t1-2"></div>
@@ -918,7 +923,7 @@
         </div>
 
         <!-- <div id="footer"> -->
-          <input type="submit" id="finish" class="btn" value="Finish" />
+          <input type="submit" id="finish" class="btn" value="FINISH" />
         <!-- </div> -->
         <div id="bottomBorder" class="wall bottomBorder"></div>
       </div>

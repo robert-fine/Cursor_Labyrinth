@@ -1,10 +1,13 @@
-const container = document.querySelector('#container');
-const playArea = document.querySelector('#playArea');
-const startBtn = document.querySelector('#start');
-const finishBtn = document.querySelector('#finish');
-const timerDisplay = document.querySelector('#timer');
-let tiles = document.querySelectorAll('.tile');
-let paths = document.querySelectorAll('.path');
+const container = document.querySelector("#container");
+const playArea = document.querySelector("#playArea");
+const startBtn = document.querySelector("#start");
+const finishBtn = document.querySelector("#finish");
+const timerDisplay = document.querySelector("#timer");
+let tiles = document.querySelectorAll(".tile");
+let paths = document.querySelectorAll(".path");
+const messageContainer = container.querySelector("#message");
+const messageText = messageContainer.querySelector("#messageContent");
+const close = messageContainer.querySelector("#close");
 
 // playArea.innerHTML = `
 // `;
@@ -13,34 +16,35 @@ let paths = document.querySelectorAll('.path');
 let walls;
 
 function findWalls() {
-  walls = container.querySelectorAll('.wall');
+  walls = container.querySelectorAll(".wall");
 }
 
 function activateWalls() {
   walls.forEach(wall => {
-    wall.setAttribute('style', 'background: var(--wall-color)');
-    wall.addEventListener('mouseover', touchWall);
+    wall.setAttribute("style", "background: var(--wall-color)");
+    wall.addEventListener("mouseover", touchWall);
   });
-  function touchWall() {
-    stopTimer();
-    stopRotate();
-    // Deactivate walls & change color
-    walls.forEach(wall => {
-      wall.setAttribute('style', 'background: var(--fail)');
-    });
-    deactivateWalls();
-  }
+}
+
+function touchWall() {
+  stopTimer();
+  stopRotate();
+  // Deactivate walls & change color
+  walls.forEach(wall => {
+    wall.setAttribute("style", "background: var(--fail)");
+  });
+  deactivateWalls();
 }
 
 function deactivateWalls() {
   walls.forEach(wall => {
-    wall.removeEventListener('mouseover', touchWall);
+    wall.removeEventListener("mouseover", touchWall);
   });
 }
 
 // Game
-startBtn.addEventListener('click', startGame);
-finishBtn.addEventListener('click', stopTimer);
+startBtn.addEventListener("click", startGame);
+finishBtn.addEventListener("click", stopTimer);
 
 function startGame(e) {
   e.preventDefault();
@@ -50,7 +54,9 @@ function startGame(e) {
   activateWalls();
   // findTiles();
   resetTileRotation();
-  rotateTimer();
+  rotateTimer1();
+  rotateTimer2();
+  rotateTimer3();
 }
 
 function finishGame(e) {
@@ -58,46 +64,114 @@ function finishGame(e) {
   stopTimer();
   stopRotate();
   deactivateWalls();
+  function youWin() {
+    message.innerHTML = `
+    
+    `;
+  }
 }
 
 tiles.forEach(tile => {
   tile.onmouseenter = function(e) {
-    e.target.classList.add('mouseIsOver');
+    e.target.classList.add("mouseIsOver");
   };
   tile.onmouseleave = function(e) {
-    e.target.classList.remove('mouseIsOver');
+    e.target.classList.remove("mouseIsOver");
   };
 });
 
 function findTiles() {
-  tiles = playArea.querySelectorAll('.tile');
+  tiles = playArea.querySelectorAll(".tile");
 }
 // Tile Rotation
-let deg = 0;
-function rotate() {
-  deg += 90;
+let left1Deg = 0;
+let left2Deg = 0;
+let left3Deg = 0;
+let right1Deg = 0;
+let right2Deg = 0;
+let right3Deg = 0;
+
+function rotate1() {
+  left1Deg -= 90;
+  right1Deg += 90;
   tiles.forEach(tile => {
-    if (!tile.classList.contains('mouseIsOver')) {
-      tile.setAttribute('style', `transform: rotate(${deg}deg)`);
+    if (
+      !tile.classList.contains("mouseIsOver") &&
+      tile.classList.contains("rotateLeft1")
+    ) {
+      tile.setAttribute("style", `transform: rotate(${left1Deg}deg)`);
+    } else if (
+      !tile.classList.contains("mouseIsOver") &&
+      tile.classList.contains("rotateRight1")
+    ) {
+      tile.setAttribute("style", `transform: rotate(${right1Deg}deg)`);
     }
   });
-  console.log('rotate');
-  rotateTimer();
+  rotateTimer1();
+}
+function rotate2() {
+  left2Deg -= 90;
+  right2Deg += 90;
+  tiles.forEach(tile => {
+    if (
+      !tile.classList.contains("mouseIsOver") &&
+      tile.classList.contains("rotateLeft2")
+    ) {
+      tile.setAttribute("style", `transform: rotate(${left2Deg}deg)`);
+    } else if (
+      !tile.classList.contains("mouseIsOver") &&
+      tile.classList.contains("rotateRight2")
+    ) {
+      tile.setAttribute("style", `transform: rotate(${right2Deg}deg)`);
+    }
+  });
+  rotateTimer2();
+}
+function rotate3() {
+  left3Deg -= 90;
+  right3Deg += 90;
+  tiles.forEach(tile => {
+    if (
+      !tile.classList.contains("mouseIsOver") &&
+      tile.classList.contains("rotateLeft3")
+    ) {
+      tile.setAttribute("style", `transform: rotate(${left3Deg}deg)`);
+    } else if (
+      !tile.classList.contains("mouseIsOver") &&
+      tile.classList.contains("rotateRight3")
+    ) {
+      tile.setAttribute("style", `transform: rotate(${right3Deg}deg)`);
+    }
+  });
+  rotateTimer3();
 }
 
-function rotateTimer() {
-  rt = setTimeout(rotate, 5000);
+function rotateTimer1() {
+  r1 = setTimeout(rotate1, 3000);
+}
+function rotateTimer2() {
+  r2 = setTimeout(rotate2, 4000);
+}
+function rotateTimer3() {
+  r3 = setTimeout(rotate3, 5000);
 }
 
 function stopRotate() {
-  clearTimeout(rt);
+  clearTimeout(r1);
+  clearTimeout(r2);
+  clearTimeout(r3);
 }
 
 function resetTileRotation() {
   tiles.forEach(tile => {
-    tile.setAttribute('style', 'transform: rotate(0deg)');
+    tile.setAttribute("style", "transform: rotate(0deg)");
   });
-  deg = 0;
+  left1Deg = 0;
+  left2Deg = 0;
+  left3Deg = 0;
+  right1Deg = 0;
+  right2Deg = 0;
+  right3Deg = 0;
 }
 
 // timer function
@@ -120,11 +194,11 @@ function add() {
 function timer() {
   t = setTimeout(add, 50);
   timerDisplay.innerHTML =
-    (min ? (min > 9 ? min : '0' + min) : '00') +
-    ':' +
-    (sec ? (sec > 9 ? sec : '0' + sec) : '00') +
-    ':' +
-    (milSec > 9 ? milSec : '0' + milSec);
+    (min ? (min > 9 ? min : "0" + min) : "00") +
+    ":" +
+    (sec ? (sec > 9 ? sec : "0" + sec) : "00") +
+    ":" +
+    (milSec > 9 ? milSec : "0" + milSec);
 }
 
 function stopTimer() {
