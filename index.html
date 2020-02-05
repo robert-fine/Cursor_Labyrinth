@@ -8,18 +8,22 @@
     <title>Lights Out Labyrinth</title>
   </head>
   <body>
-    <div id="message">
-        <input type="submit" id="close" value="❌"></input>
-      
-      <div id="messageContent">testing</div>
-    </div>
+    <h1>Lights Out Labyrinth</h1>
     <div id="container">
+      <div id="message">
+          <input type="submit" id="close" value="❌"></input>
+        
+        <div id="messageContent">
+          <h2>Game Over</h2>
+            <p>You lasted ${} before you touched a wall</p>
+        </div>
+      </div>
       <!-- <div id="border"> -->
         <div id="topBorder" class="wall topBorder"></div>
         <div id="leftBorder" class="wall leftBorder"></div>
         <div id="rightBorder" class="wall rightBorder"></div>
         <!-- <div id="header"> -->
-          <input type="submit" id="start" class="btn" value="START" />
+          <input type="submit" id="start" class="btn" value="START"  />
           <p id="timer">00:00:00</p>
         <!-- </div> -->
         <div id="playArea">
