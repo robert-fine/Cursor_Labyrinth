@@ -21,7 +21,7 @@ html {
 body {
   position: absolute;
   background: var(--background);
-  line-height: 1.4;
+  /* line-height: 1.4; */
   color: var(--whiteish);
   min-height: 100vh;
   min-width: 100vw;
@@ -29,6 +29,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
+  font-family: "Tomorrow", sans-serif;
 }
 
 h1 {
@@ -57,11 +58,17 @@ h1 {
   width: 600px;
   height: 400px;
   margin: -200px 0 0 -300px;
-  display: none;
+  display: block;
 }
 
 #messageContent {
   margin: auto;
+  text-align: center;
+  line-height: 2;
+}
+
+h2 {
+  font-size: 3rem;
 }
 
 #close {

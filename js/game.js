@@ -1,45 +1,44 @@
-const container = document.querySelector('#container');
-const playArea = document.querySelector('#playArea');
-const startBtn = document.querySelector('#start');
-const finishBtn = document.querySelector('#finish');
-const timerDisplay = document.querySelector('#timer');
-let tiles = document.querySelectorAll('.tile');
-let paths = document.querySelectorAll('.path');
-const messageContainer = container.querySelector('#message');
-const messageText = messageContainer.querySelector('#messageContent');
-const close = messageContainer.querySelector('#close');
+const container = document.querySelector("#container");
+const playArea = document.querySelector("#playArea");
+const startBtn = document.querySelector("#start");
+const finishBtn = document.querySelector("#finish");
+const timerDisplay = document.querySelector("#timer");
+let tiles = document.querySelectorAll(".tile");
+let paths = document.querySelectorAll(".path");
+const messageContainer = container.querySelector("#message");
+const messageText = messageContainer.querySelector("#messageContent");
+const close = messageContainer.querySelector("#close");
 
 // playArea.innerHTML = `
 // `;
 
 // Message Box
 function displayMsgBox() {
-  messageContainer.setAttribute('style', 'display: block');
+  messageContainer.setAttribute("style", "display: block");
   startBtn.disabled = true;
 }
 
 function closeMsgBox(e) {
   e.preventDefault();
-  messageContainer.setAttribute('style', 'display: none');
+  messageContainer.setAttribute("style", "display: none");
 
   // enable start button
   startBtn.disabled = false;
 }
 
-close.addEventListener('click', closeMsgBox);
-messageContainer.addEventListener('blur', closeMsgBox);
+close.addEventListener("click", closeMsgBox);
+messageContainer.addEventListener("blur", closeMsgBox);
 
 function gameOverMsg() {
   messageText.innerHTML = `
   <h2>Game Over</h2>
-          <p>You lasted ${(min ? (min > 9 ? min : '0' + min) : '00') +
-            'm : ' +
-            (sec ? (sec > 9 ? sec : '0' + sec) : '00') +
-            's : ' +
+          <p>You lasted ${(min ? (min > 9 ? min : "0" + min) : "00") +
+            "m : " +
+            (sec ? (sec > 9 ? sec : "0" + sec) : "00") +
+            "s : " +
             (milSec > 9
               ? milSec
-              : '0' + milSec)}ms before you touched a wall</p>
-      </div>
+              : "0" + milSec)}ms before you touched a wall</p>
   `;
   displayMsgBox();
 }
@@ -48,13 +47,13 @@ let walls;
 
 // find function in case multiple levels are made in individual js files
 function findWalls() {
-  walls = container.querySelectorAll('.wall');
+  walls = container.querySelectorAll(".wall");
 }
 
 function activateWalls() {
   walls.forEach(wall => {
-    wall.setAttribute('style', 'background: var(--wall-color)');
-    wall.addEventListener('mouseover', touchWall);
+    wall.setAttribute("style", "background: var(--wall-color)");
+    wall.addEventListener("mouseover", touchWall);
   });
 }
 
@@ -64,7 +63,7 @@ function touchWall() {
   stopRotate();
   // Deactivate walls & change color
   walls.forEach(wall => {
-    wall.setAttribute('style', 'background: var(--fail)');
+    wall.setAttribute("style", "background: var(--fail)");
   });
   deactivateWalls();
   gameOverMsg();
@@ -72,13 +71,13 @@ function touchWall() {
 
 function deactivateWalls() {
   walls.forEach(wall => {
-    wall.removeEventListener('mouseover', touchWall);
+    wall.removeEventListener("mouseover", touchWall);
   });
 }
 
 // Game
-startBtn.addEventListener('click', startGame);
-finishBtn.addEventListener('click', stopTimer);
+startBtn.addEventListener("click", startGame);
+finishBtn.addEventListener("click", stopTimer);
 
 function startGame(e) {
   e.preventDefault();
@@ -91,7 +90,7 @@ function startGame(e) {
   rotateTimer1();
   rotateTimer2();
   rotateTimer3();
-  window.addEventListener('resize', touchWall);
+  window.addEventListener("resize", touchWall);
 }
 
 function finishGame(e) {
@@ -106,19 +105,19 @@ function finishGame(e) {
   // }
 }
 
-window.addEventListener('blur', touchWall);
+window.addEventListener("blur", touchWall);
 
 tiles.forEach(tile => {
   tile.onmouseenter = function(e) {
-    e.target.classList.add('mouseIsOver');
+    e.target.classList.add("mouseIsOver");
   };
   tile.onmouseleave = function(e) {
-    e.target.classList.remove('mouseIsOver');
+    e.target.classList.remove("mouseIsOver");
   };
 });
 
 function findTiles() {
-  tiles = playArea.querySelectorAll('.tile');
+  tiles = playArea.querySelectorAll(".tile");
 }
 // Tile Rotation
 let left1Deg = 0;
@@ -133,15 +132,15 @@ function rotate1() {
   right1Deg += 90;
   tiles.forEach(tile => {
     if (
-      !tile.classList.contains('mouseIsOver') &&
-      tile.classList.contains('rotateLeft1')
+      !tile.classList.contains("mouseIsOver") &&
+      tile.classList.contains("rotateLeft1")
     ) {
-      tile.setAttribute('style', `transform: rotate(${left1Deg}deg)`);
+      tile.setAttribute("style", `transform: rotate(${left1Deg}deg)`);
     } else if (
-      !tile.classList.contains('mouseIsOver') &&
-      tile.classList.contains('rotateRight1')
+      !tile.classList.contains("mouseIsOver") &&
+      tile.classList.contains("rotateRight1")
     ) {
-      tile.setAttribute('style', `transform: rotate(${right1Deg}deg)`);
+      tile.setAttribute("style", `transform: rotate(${right1Deg}deg)`);
     }
   });
   rotateTimer1();
@@ -151,15 +150,15 @@ function rotate2() {
   right2Deg += 90;
   tiles.forEach(tile => {
     if (
-      !tile.classList.contains('mouseIsOver') &&
-      tile.classList.contains('rotateLeft2')
+      !tile.classList.contains("mouseIsOver") &&
+      tile.classList.contains("rotateLeft2")
     ) {
-      tile.setAttribute('style', `transform: rotate(${left2Deg}deg)`);
+      tile.setAttribute("style", `transform: rotate(${left2Deg}deg)`);
     } else if (
-      !tile.classList.contains('mouseIsOver') &&
-      tile.classList.contains('rotateRight2')
+      !tile.classList.contains("mouseIsOver") &&
+      tile.classList.contains("rotateRight2")
     ) {
-      tile.setAttribute('style', `transform: rotate(${right2Deg}deg)`);
+      tile.setAttribute("style", `transform: rotate(${right2Deg}deg)`);
     }
   });
   rotateTimer2();
@@ -169,15 +168,15 @@ function rotate3() {
   right3Deg += 90;
   tiles.forEach(tile => {
     if (
-      !tile.classList.contains('mouseIsOver') &&
-      tile.classList.contains('rotateLeft3')
+      !tile.classList.contains("mouseIsOver") &&
+      tile.classList.contains("rotateLeft3")
     ) {
-      tile.setAttribute('style', `transform: rotate(${left3Deg}deg)`);
+      tile.setAttribute("style", `transform: rotate(${left3Deg}deg)`);
     } else if (
-      !tile.classList.contains('mouseIsOver') &&
-      tile.classList.contains('rotateRight3')
+      !tile.classList.contains("mouseIsOver") &&
+      tile.classList.contains("rotateRight3")
     ) {
-      tile.setAttribute('style', `transform: rotate(${right3Deg}deg)`);
+      tile.setAttribute("style", `transform: rotate(${right3Deg}deg)`);
     }
   });
   rotateTimer3();
@@ -201,7 +200,7 @@ function stopRotate() {
 
 function resetTileRotation() {
   tiles.forEach(tile => {
-    tile.setAttribute('style', 'transform: rotate(0deg)');
+    tile.setAttribute("style", "transform: rotate(0deg)");
   });
   left1Deg = 0;
   left2Deg = 0;
@@ -231,11 +230,11 @@ function add() {
 function timer() {
   t = setTimeout(add, 50);
   timerDisplay.innerHTML =
-    (min ? (min > 9 ? min : '0' + min) : '00') +
-    ':' +
-    (sec ? (sec > 9 ? sec : '0' + sec) : '00') +
-    ':' +
-    (milSec > 9 ? milSec : '0' + milSec);
+    (min ? (min > 9 ? min : "0" + min) : "00") +
+    ":" +
+    (sec ? (sec > 9 ? sec : "0" + sec) : "00") +
+    ":" +
+    (milSec > 9 ? milSec : "0" + milSec);
 }
 
 function stopTimer() {
