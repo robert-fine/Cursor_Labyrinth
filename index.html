@@ -6,27 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link href="https://fonts.googleapis.com/css?family=Tomorrow&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
-    <title>Lights Out Labyrinth</title>
+    <title>Cursor Labyrinth</title>
   </head>
   <body>
-    <h1>Lights Out Labyrinth</h1>
+    <h1>Cursor Labyrinth</h1>
+    <div id="spotlight"></div>
     <div id="container">
       <div id="message">
           <input type="submit" id="close" value="❌"></input>
         
         <div id="messageContent">
-          <h2>Game Over</h2>
-            <p>You lasted ${} before you touched a wall</p>
-        </div>
+          </div>
       </div>
-      <!-- <div id="border"> -->
         <div id="topBorder" class="wall topBorder"></div>
         <div id="leftBorder" class="wall leftBorder"></div>
         <div id="rightBorder" class="wall rightBorder"></div>
-        <!-- <div id="header"> -->
           <input type="submit" id="start" class="btn" value="START"  />
           <p id="timer">00:00:00</p>
-        <!-- </div> -->
         <div id="playArea">
           <div class="row r1">
             <div class="tile r1-c1 rotateLeft1 square">

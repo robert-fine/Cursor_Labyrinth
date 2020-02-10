@@ -8,9 +8,7 @@ let paths = document.querySelectorAll(".path");
 const messageContainer = container.querySelector("#message");
 const messageText = messageContainer.querySelector("#messageContent");
 const close = messageContainer.querySelector("#close");
-
-// playArea.innerHTML = `
-// `;
+const spotlight = document.querySelector("#spotlight");
 
 // Message Box
 function displayMsgBox() {
@@ -31,17 +29,24 @@ messageContainer.addEventListener("blur", closeMsgBox);
 
 function gameOverMsg() {
   messageText.innerHTML = `
-  <h2>Game Over</h2>
-          <p>You lasted ${(min ? (min > 9 ? min : "0" + min) : "00") +
-            "m : " +
-            (sec ? (sec > 9 ? sec : "0" + sec) : "00") +
-            "s : " +
-            (milSec > 9
-              ? milSec
-              : "0" + milSec)}ms before you touched a wall</p>
+    <h2>Game Over</h2>
+    <p>Try again!</p>
   `;
   displayMsgBox();
 }
+
+function winMsg() {
+  messageText.innerHTML = `
+    <h2>You win!</h2>
+    <p>It took you ${(min ? (min > 9 ? min : "0" + min) : "00") +
+      "m : " +
+      (sec ? (sec > 9 ? sec : "0" + sec) : "00") +
+      "s : " +
+      (milSec > 9 ? milSec : "0" + milSec)}ms to finish</p>
+  `;
+  displayMsgBox();
+}
+
 // Walls
 let walls;
 
@@ -67,6 +72,8 @@ function touchWall() {
   });
   deactivateWalls();
   gameOverMsg();
+  window.removeEventListener("blur", touchWall);
+  window.removeEventListener("resize", touchWall);
 }
 
 function deactivateWalls() {
@@ -75,9 +82,14 @@ function deactivateWalls() {
   });
 }
 
+// spotlight
+// function lightsOut(e) {
+//   const { offsetX: x, offsetY: y } = e;
+// }
+
 // Game
 startBtn.addEventListener("click", startGame);
-finishBtn.addEventListener("click", stopTimer);
+finishBtn.addEventListener("click", finishGame);
 
 function startGame(e) {
   e.preventDefault();
@@ -95,14 +107,12 @@ function startGame(e) {
 
 function finishGame(e) {
   e.preventDefault();
+  winMsg();
   stopTimer();
   stopRotate();
   deactivateWalls();
-  // function youWin() {
-  //   message.innerHTML = `
-
-  //   `;
-  // }
+  window.removeEventListener("blur", touchWall);
+  window.removeEventListener("resize", touchWall);
 }
 
 window.addEventListener("blur", touchWall);
@@ -131,6 +141,8 @@ function rotate1() {
   left1Deg -= 90;
   right1Deg += 90;
   tiles.forEach(tile => {
+    deactivateWalls();
+    setTimeout(activateWalls, 250);
     if (
       !tile.classList.contains("mouseIsOver") &&
       tile.classList.contains("rotateLeft1")
@@ -183,13 +195,13 @@ function rotate3() {
 }
 
 function rotateTimer1() {
-  r1 = setTimeout(rotate1, 2000);
+  r1 = setTimeout(rotate1, 1888);
 }
 function rotateTimer2() {
-  r2 = setTimeout(rotate2, 3000);
+  r2 = setTimeout(rotate2, 2777);
 }
 function rotateTimer3() {
-  r3 = setTimeout(rotate3, 4000);
+  r3 = setTimeout(rotate3, 3444);
 }
 
 function stopRotate() {
@@ -200,6 +212,8 @@ function stopRotate() {
 
 function resetTileRotation() {
   tiles.forEach(tile => {
+    deactivateWalls();
+    setTimeout(activateWalls, 250);
     tile.setAttribute("style", "transform: rotate(0deg)");
   });
   left1Deg = 0;
@@ -246,5 +260,3 @@ function resetTimer() {
   sec = 0;
   milSec = 0;
 }
-
-// add rotate1 (90deg), rotate2 (180deg), rotate3 (270deg) then erase for rotate4 and start over (use if statements)

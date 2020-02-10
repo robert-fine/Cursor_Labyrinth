@@ -58,7 +58,7 @@ h1 {
   width: 600px;
   height: 400px;
   margin: -200px 0 0 -300px;
-  display: block;
+  display: none;
 }
 
 #messageContent {
@@ -67,8 +67,34 @@ h1 {
   line-height: 2;
 }
 
+#spotlight {
+  background: url("../Lights_Out_Labyrinth/spotlight.svg");
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 2000px;
+  width: 2000px;
+  display: none;
+  /* height: 200px;
+  width: 200px;
+  border: solid var(--background) 25rem;
+  border-radius: 100%;
+  background: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 00;
+  left: -900;
+  z-index: 3;
+  box-sizing: content-box; */
+}
+
 h2 {
-  font-size: 3rem;
+  font-size: 4rem;
+  padding-top: 1rem;
+}
+
+#messageContent p {
+  font-size: 1.5rem;
 }
 
 #close {
