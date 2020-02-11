@@ -29,7 +29,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  font-family: "Tomorrow", sans-serif;
+  font-family: 'Tomorrow', sans-serif;
 }
 
 h1 {
@@ -67,8 +67,8 @@ h1 {
   line-height: 2;
 }
 
-#spotlight {
-  background: url("../Lights_Out_Labyrinth/spotlight.svg");
+/* #spotlight {
+  background: url('../Lights_Out_Labyrinth/spotlight.svg');
   z-index: 3;
   position: absolute;
   top: 0;
@@ -76,7 +76,7 @@ h1 {
   height: 2000px;
   width: 2000px;
   display: none;
-  /* height: 200px;
+  height: 200px;
   width: 200px;
   border: solid var(--background) 25rem;
   border-radius: 100%;
@@ -85,8 +85,8 @@ h1 {
   top: 00;
   left: -900;
   z-index: 3;
-  box-sizing: content-box; */
-}
+  box-sizing: content-box;
+} */
 
 h2 {
   font-size: 4rem;
@@ -122,6 +122,10 @@ h2 {
   color: var(--background);
   z-index: 1;
   font-weight: bolder;
+}
+
+.mobile {
+  visibility: hidden;
 }
 
 #start {
@@ -601,4 +605,19 @@ h2 {
   height: 25px;
   left: 175px;
   top: 175px;
+}
+
+@media only screen and (max-width: 849px) {
+  .game {
+    visibility: hidden;
+  }
+
+  .mobile {
+    visibility: visible;
+    margin: 2rem;
+  }
+
+  .mobile h2 {
+    font-size: 2.5rem;
+  }
 }
