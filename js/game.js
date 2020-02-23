@@ -66,6 +66,7 @@ function activateWalls() {
 function touchWall() {
   stopTimer();
   stopRotate();
+  document.body.style.cursor = "default";
   // Deactivate walls & change color
   walls.forEach(wall => {
     wall.setAttribute("style", "background: var(--fail)");
@@ -93,6 +94,7 @@ finishBtn.addEventListener("click", finishGame);
 
 function startGame(e) {
   e.preventDefault();
+  document.body.style.cursor = "pointer";
   findWalls();
   resetTimer();
   timer();
@@ -107,6 +109,7 @@ function startGame(e) {
 
 function finishGame(e) {
   e.preventDefault();
+  document.body.style.cursor = "default";
   winMsg();
   stopTimer();
   stopRotate();
